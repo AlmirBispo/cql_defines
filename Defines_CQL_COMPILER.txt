@@ -28,28 +28,37 @@
   <@vars>
     {    #
     }    #
-    /* locations to htdocs folder reference to views [public] exemple */
-    c:\adl_servidor\htdocs\ #
-    /* correlate table add_task_table  function as @def_add_task_table */
-    task_table #
+    query=0;to_field=0#
     0;0;0;0 #
     0;0;0   #
     0;0     #
     0       #   
     query   #
-    to_field
+    to_field #
+    /* database_path ,templates , system_variables are any folders  to model,view and controller [@CTRL] */
+    c:\database_path\ #
+    c:\templates_path\ #
+    c:\system_variables\ #
+    /* locations to htdocs folder reference to views [public] exemple */
+    c:\adl_servidor\htdocs\ #
+    /* correlate table add_task_table  function as @def_add_task_table */
+    task_table     
   </@vars>
   <@tags>
    function     #
-   end          #  
-   view         #
-   @def_add_task_table #
+   end          # 
+   commit       # 
    [null_4]     #
    [null_3]     #
    [null_2]     #
    [null_1]     #
    [q]          #
-   [f] 
+   [f]          #
+   [@DB]        #
+   [@MODEL]     #
+   [@CTRL]      #
+   [@VIEW]      #
+   @def_add_task_table     
   </@tags>
 </@define>
 /* END DEFINES */
@@ -69,33 +78,30 @@
 
 /* create a table on apache doc path */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @table;
     [null_4];
-    [q]=0;
-    [f]=0
+    commit
 end
 /*  create a field */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @fields;
     ( ID ; NAME ; PHONE );
     [null_3];
-    [q]=0;
-    [f]=0
+    commit
 end
 /* add data to table */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @add;
     ( 001 ; Jonh_Doo ; 31-9222-9283 );
     [null_3];
-    [q]=0;
-    [f]=0
+    commit
 end
 /* header of report */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @header;
     ( 
     <font // color='Blue' // size='5'>
@@ -108,12 +114,11 @@ function
     </font>
     );
     [null_3];
-    [q]=0;
-    [f]=0
+    commit
 end
 /* footer of report */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @footer;
     ( 
     <font // color='Blue' // size='5'>
@@ -125,12 +130,11 @@ function
     </font>
     );
     [null_3];
-    [q]=0;
-    [f]=0
+    commit
 end
 /* create a html of the table */
 function
-    view @def_add_task_table;
+    [@VIEW] @def_add_task_table;
     @html; 
     /* table  border with */ 
     (1);
@@ -140,6 +144,5 @@ function
     (teal);
     /* any css file path */
     (prop\css\quick_blue.css);
-    [q]=0;  
-    [f]=0
+    commit
 end  
