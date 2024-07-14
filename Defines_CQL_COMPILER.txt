@@ -28,7 +28,7 @@
   <@vars>
     {    #
     }    #
-    /* locations to htdocs foldes reference to views [public] exemple */
+    /* locations to htdocs folder reference to views [public] exemple */
     c:\adl_servidor\htdocs\ #
     /* correlate table add_task_table  function as @def_add_task_table */
     task_table #
@@ -43,7 +43,7 @@
    function     #
    end          #  
    view         #
-   @def_add_task_table#
+   @def_add_task_table #
    [null_4]     #
    [null_3]     #
    [null_2]     #
@@ -65,7 +65,7 @@
 {c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@delete;0;0;0;0;query=0;to_field=0}
 */
 
-/* Porposal Solution*/
+/* Proposal Solution*/
 
 /* create a table on apache doc path */
 function
