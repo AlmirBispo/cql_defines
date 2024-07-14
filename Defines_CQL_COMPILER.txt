@@ -1,0 +1,145 @@
+/*
+ This file has the defines compiler to short the CQL sentences
+ author: Almir Bispo
+ Date:14/02/2024
+ Exemple how to use
+ The defines.inf file must exists on CSV Comp DB directory.
+ https://adltecnologia.blogspot.com
+ email: gibroh_webmaster@hotmail.com 
+ */
+ 
+/* Permissions required,case sensitive */ 
+{
+	none;
+	@open_domain;
+	/* User domain file name */
+	(Admin.dmn);
+	/* User name */
+	(Admin);
+	/* Password */
+	(masterkey);
+	0;
+	query=0;
+	to_field=0
+}
+/* Defines definitions to short names compiler */
+/* START DEFINES */
+<@define>
+  <@vars>
+    {    #
+    }    #
+    /* locations to htdocs foldes reference to views [public] exemple */
+    c:\adl_servidor\htdocs\ #
+    /* correlate table add_task_table  function as @def_add_task_table */
+    task_table #
+    0;0;0;0 #
+    0;0;0   #
+    0;0     #
+    0       #   
+    query   #
+    to_field
+  </@vars>
+  <@tags>
+   function     #
+   end          #  
+   view         #
+   @def_add_task_table#
+   [null_4]     #
+   [null_3]     #
+   [null_2]     #
+   [null_1]     #
+   [q]          #
+   [f] 
+  </@tags>
+</@define>
+/* END DEFINES */
+
+/* Exemple of verbosity problem */
+/*
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@table;0;0;0;0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@fields;(<@MY-PAGE>);0;0;0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;(<@MY-PAGE>);(c:\appDB\DIST\service-template\adicionar_tarefa.pro);(.html);0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@ID-SERVICE]);(c:\appDB\DIST\provedor\put_id_cnpj\HASH_SERVICO.csv);(.html);0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@CNPJ]);(c:\appDB\DIST\provedor\put_id_cnpj\CNPJ_CPF.csv);(.html);0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@PASSWORD]);(c:\appDB\DIST\provedor\put_id_cnpj\SENHA.csv);(.html);0;query=0;to_field=0}
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@delete;0;0;0;0;query=0;to_field=0}
+*/
+
+/* Porposal Solution*/
+
+/* create a table on apache doc path */
+function
+    view @def_add_task_table;
+    @table;
+    [null_4];
+    [q]=0;
+    [f]=0
+end
+/*  create a field */
+function
+    view @def_add_task_table;
+    @fields;
+    ( ID ; NAME ; PHONE );
+    [null_3];
+    [q]=0;
+    [f]=0
+end
+/* add data to table */
+function
+    view @def_add_task_table;
+    @add;
+    ( 001 ; Jonh_Doo ; 31-9222-9283 );
+    [null_3];
+    [q]=0;
+    [f]=0
+end
+/* header of report */
+function
+    view @def_add_task_table;
+    @header;
+    ( 
+    <font // color='Blue' // size='5'>
+    <table // align='center' // border='1'>
+    <tr><td>
+    Report_@def_add_task_table<br>
+    Date:[@date]-Time:[@time]    
+    </td></tr>
+    </table> 
+    </font>
+    );
+    [null_3];
+    [q]=0;
+    [f]=0
+end
+/* footer of report */
+function
+    view @def_add_task_table;
+    @footer;
+    ( 
+    <font // color='Blue' // size='5'>
+    <table // align='center' // border='1'>
+    <tr><td>
+    End_of_Report <br>  
+    </td></tr>
+    </table> 
+    </font>
+    );
+    [null_3];
+    [q]=0;
+    [f]=0
+end
+/* create a html of the table */
+function
+    view @def_add_task_table;
+    @html; 
+    /* table  border with */ 
+    (1);
+    /* table font size */
+    (5);
+    /* table font color */
+    (teal);
+    /* any css file path */
+    (prop\css\quick_blue.css);
+    [q]=0;  
+    [f]=0
+end  

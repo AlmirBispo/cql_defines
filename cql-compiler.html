@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled</title>
+<style>
+<!--
+body { color: #000000; background-color: #191919; }
+.sql1-comment { color: #00FF00; }
+.sql1-datatype { color: #FFBB77; }
+.sql1-identifier { color: #F8F8F2; }
+.sql1-number { color: #FF5E5E; }
+.sql1-reservedword { color: #00FFFF; }
+.sql1-space { color: #5F5F5F; }
+.sql1-string { color: #E6DB74; }
+.sql1-symbol { color: #8080C0; }
+.sql1-variable { color: #0080C0; }
+-->
+</style>
+</head>
+<body>
+<div style="font-family: Consolas, 'Courier New', monospace; font-size: 10pt; background-color: #191919;"><div><span class="sql1-comment">/*<br>
+&nbsp;This&nbsp;file&nbsp;has&nbsp;the&nbsp;defines&nbsp;compiler&nbsp;to&nbsp;short&nbsp;the&nbsp;CQL&nbsp;sentences<br>
+&nbsp;author:&nbsp;Almir&nbsp;Bispo<br>
+&nbsp;Date:14/02/2024<br>
+&nbsp;Exemple&nbsp;how&nbsp;to&nbsp;use<br>
+&nbsp;The&nbsp;defines.inf&nbsp;file&nbsp;must&nbsp;exists&nbsp;on&nbsp;CSV&nbsp;Comp&nbsp;DB&nbsp;directory&nbsp;<br>
+&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;Permissions&nbsp;required,case&nbsp;sensitive&nbsp;*/</span><span class="sql1-space">&nbsp;</span><br></div>
+<div><span class="sql1-symbol">{</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-reservedword">none</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-variable">@open_domain</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-comment">/*&nbsp;User&nbsp;domain&nbsp;file&nbsp;name&nbsp;*/</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-symbol">(</span><span class="sql1-identifier">Admin</span><span class="sql1-symbol">.</span><span class="sql1-identifier">dmn</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-comment">/*&nbsp;User&nbsp;name&nbsp;*/</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-symbol">(</span><span class="sql1-identifier">Admin</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-comment">/*&nbsp;Password&nbsp;*/</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-symbol">(</span><span class="sql1-identifier">masterkey</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-identifier">query</span><span class="sql1-symbol">=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">	</span><span class="sql1-identifier">to_field</span><span class="sql1-symbol">=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-symbol">}</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;Defines&nbsp;definitions&nbsp;to&nbsp;short&nbsp;names&nbsp;compiler&nbsp;*/<br>
+/*&nbsp;START&nbsp;DEFINES&nbsp;*/</span><br></div>
+<div><span class="sql1-symbol">&lt;</span><span class="sql1-variable">@define</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-variable">@vars</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">{</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">}</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;locations&nbsp;to&nbsp;htdocs&nbsp;foldes&nbsp;reference&nbsp;to&nbsp;views&nbsp;[public]&nbsp;exemple&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">c</span><span class="sql1-symbol">:</span><span class="sql1-identifier">\adl_servidor\htdocs\</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;correlate&nbsp;table&nbsp;add_task_table&nbsp;&nbsp;function&nbsp;as&nbsp;@def_add_task_table&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">task_table</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-number">0</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-number">0</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">query</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">to_field</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-variable">@vars</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-variable">@tags</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">function</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">end</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><span class="sql1-space">&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_4</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_3</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_2</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_1</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">#</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-variable">@tags</span><span class="sql1-symbol">&gt;<br>
+&lt;/</span><span class="sql1-variable">@define</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;END&nbsp;DEFINES&nbsp;*/<br>
+<br>
+/*&nbsp;Exemple&nbsp;of&nbsp;verbosity&nbsp;problem&nbsp;*/<br>
+/*<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@table;0;0;0;0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@fields;(&lt;@MY-PAGE&gt;);0;0;0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;(&lt;@MY-PAGE&gt;);(c:\appDB\DIST\service-template\adicionar_tarefa.pro);(.html);0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@ID-SERVICE]);(c:\appDB\DIST\provedor\put_id_cnpj\HASH_SERVICO.csv);(.html);0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@CNPJ]);(c:\appDB\DIST\provedor\put_id_cnpj\CNPJ_CPF.csv);(.html);0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@set_tag;([::@PASSWORD]);(c:\appDB\DIST\provedor\put_id_cnpj\SENHA.csv);(.html);0;query=0;to_field=0}<br>
+{c:\adl_servidor\htdocs\id_service\adicionar_tarefa;@delete;0;0;0;0;query=0;to_field=0}<br>
+*/<br>
+<br>
+/*&nbsp;Porposal&nbsp;Solution*/<br>
+<br>
+/*&nbsp;create&nbsp;a&nbsp;table&nbsp;on&nbsp;apache&nbsp;doc&nbsp;path&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_4</span><span class="sql1-symbol">];</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;&nbsp;create&nbsp;a&nbsp;field&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@fields</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">ID</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;</span><span class="sql1-reservedword">NAME</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">PHONE</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_3</span><span class="sql1-symbol">];</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;add&nbsp;data&nbsp;to&nbsp;table&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@add</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-space">&nbsp;</span><span class="sql1-number">001</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">Jonh_Doo</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;</span><span class="sql1-number">31-9222-9283</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_3</span><span class="sql1-symbol">];</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;header&nbsp;of&nbsp;report&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@header</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">font</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">color</span><span class="sql1-symbol">=</span><span class="sql1-string">'Blue'</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-reservedword">size</span><span class="sql1-symbol">=</span><span class="sql1-string">'5'</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-reservedword">table</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">align</span><span class="sql1-symbol">=</span><span class="sql1-string">'center'</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">border</span><span class="sql1-symbol">=</span><span class="sql1-string">'1'</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">tr</span><span class="sql1-symbol">&gt;&lt;</span><span class="sql1-identifier">td</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">Report_</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">br</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-datatype">Date</span><span class="sql1-symbol">:[</span><span class="sql1-variable">@date</span><span class="sql1-symbol">]-</span><span class="sql1-reservedword">Time</span><span class="sql1-symbol">:[</span><span class="sql1-variable">@time</span><span class="sql1-symbol">]</span><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-identifier">td</span><span class="sql1-symbol">&gt;&lt;/</span><span class="sql1-identifier">tr</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-reservedword">table</span><span class="sql1-symbol">&gt;</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-identifier">font</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_3</span><span class="sql1-symbol">];</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;footer&nbsp;of&nbsp;report&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@footer</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">font</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">color</span><span class="sql1-symbol">=</span><span class="sql1-string">'Blue'</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-reservedword">size</span><span class="sql1-symbol">=</span><span class="sql1-string">'5'</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-reservedword">table</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">align</span><span class="sql1-symbol">=</span><span class="sql1-string">'center'</span><span class="sql1-space">&nbsp;/</span><span class="sql1-symbol">/</span><span class="sql1-space">&nbsp;</span><span class="sql1-identifier">border</span><span class="sql1-symbol">=</span><span class="sql1-string">'1'</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">tr</span><span class="sql1-symbol">&gt;&lt;</span><span class="sql1-identifier">td</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-identifier">End_of_Report</span><span class="sql1-space">&nbsp;</span><span class="sql1-symbol">&lt;</span><span class="sql1-identifier">br</span><span class="sql1-symbol">&gt;</span><span class="sql1-space">&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-identifier">td</span><span class="sql1-symbol">&gt;&lt;/</span><span class="sql1-identifier">tr</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-reservedword">table</span><span class="sql1-symbol">&gt;</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">&lt;/</span><span class="sql1-identifier">font</span><span class="sql1-symbol">&gt;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">null_3</span><span class="sql1-symbol">];</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><br></div>
+<div><span class="sql1-comment">/*&nbsp;create&nbsp;a&nbsp;html&nbsp;of&nbsp;the&nbsp;table&nbsp;*/</span><br></div>
+<div><span class="sql1-reservedword">function</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-reservedword">view</span><span class="sql1-space">&nbsp;</span><span class="sql1-variable">@def_add_task_table</span><span class="sql1-symbol">;</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-variable">@html</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;table&nbsp;&nbsp;border&nbsp;with&nbsp;*/</span><span class="sql1-space">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-number">1</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;table&nbsp;font&nbsp;size&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-number">5</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;table&nbsp;font&nbsp;color&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-identifier">teal</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-comment">/*&nbsp;any&nbsp;css&nbsp;file&nbsp;path&nbsp;*/</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">(</span><span class="sql1-identifier">prop\css\quick_blue</span><span class="sql1-symbol">.</span><span class="sql1-identifier">css</span><span class="sql1-symbol">);</span><br></div>
+<div><span class="sql1-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">q</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><span class="sql1-symbol">;</span><span class="sql1-space">&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="sql1-symbol">[</span><span class="sql1-identifier">f</span><span class="sql1-symbol">]=</span><span class="sql1-number">0</span><br></div>
+<div><span class="sql1-reservedword">end</span><span class="sql1-space">&nbsp;&nbsp;</span><br></div>
+</div>
+</body>
+</html>
